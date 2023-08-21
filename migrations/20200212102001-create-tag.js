@@ -1,0 +1,40 @@
+"use strict";
+module.exports = {
+  up: (queryInterface, Sequelize) => {
+    return queryInterface.createTable("Tags", {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      command: {
+        allowNull: false,
+        type: Sequelize.STRING,
+        unique: true
+      },
+      response: {
+        allowNull: false,
+        type: Sequelize.TEXT("long")
+      },
+      count: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        allowNull: false
+      },
+      createdBy: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      createdAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      },
+      updatedAt: {
+        allowNull: false,
+        type: Sequelize.DATE
+      }
+    });
+  },
+  down: (queryInterface, Sequelize) => {}
+};
